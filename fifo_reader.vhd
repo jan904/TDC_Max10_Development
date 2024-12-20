@@ -50,12 +50,11 @@ BEGIN
 
         CASE state IS
             WHEN IDLE =>
-                IF fifo_empty = '0' THEN
-                    data_valid_next <= '0';
+                data_valid_next <= '0';
+                IF fifo_empty = '0' THEN  
                     rd_next <= '1';
                     next_state <= READ_DATA;
                 ELSE
-                    data_valid_next <= '0';
                     next_state <= IDLE;
                 END IF;
 
@@ -66,6 +65,7 @@ BEGIN
                 next_state <= IDLE;
 
             WHEN OTHERS =>
+                rd_next <= '0';
                 next_state <= IDLE;
         END CASE;
 

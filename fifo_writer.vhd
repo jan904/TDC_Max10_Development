@@ -29,7 +29,7 @@ ARCHITECTURE rtl OF fifo_writer IS
 
     SIGNAL written_channels_next, written_channels_reg : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
-    SIGNAL count, count_next : INTEGER range 0 to 4;
+    SIGNAL count, count_next : INTEGER range 0 to 12;
 
 BEGIN
 
@@ -66,6 +66,7 @@ BEGIN
         count_next <= count;
 
         CASE state IS
+
             WHEN IDLE =>
                 wr_next <= '0';
                 written_channels_next <= "0000";
@@ -116,7 +117,7 @@ BEGIN
                 END IF;
 
             WHEN RST =>
-                IF count = 4 THEN
+                IF count = 2 THEN
                     next_state <= IDLE;
                     count_next <= 0;
                 ELSE
@@ -127,6 +128,7 @@ BEGIN
 
             WHEN OTHERS =>
                 next_state <= IDLE;
+                wr_next <= '0';
 
         END CASE;
 

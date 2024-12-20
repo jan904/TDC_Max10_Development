@@ -27,7 +27,7 @@ use IEEE.NUMERIC_STD.ALL;
 use work.baudPack.all;
 
 entity uart is
-        generic (mhz: integer := 25
+        generic (mhz: integer := 12
     );
     PORT(
          clk : IN  std_logic;

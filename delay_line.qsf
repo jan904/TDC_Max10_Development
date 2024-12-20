@@ -2402,6 +2402,24 @@ set_location_assignment FF_X28_Y3_N27 -to "channel:channel_inst_4|delay_line:del
 set_location_assignment FF_X28_Y3_N29 -to "channel:channel_inst_4|delay_line:delay_line_inst|fdr:\\latch_1:286:ff1|q"
 set_location_assignment FF_X28_Y3_N31 -to "channel:channel_inst_4|delay_line:delay_line_inst|fdr:\\latch_1:287:ff1|q"
 
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_W18 -to serial_out
+set_location_assignment PIN_AA21 -to signal_out[2]
+set_location_assignment PIN_U21 -to signal_out[4]
+set_location_assignment PIN_U22 -to signal_out[6]
+set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[6]
+set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[4]
+set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[2]
+set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[0]
+set_location_assignment PIN_T20 -to signal_out[8]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to serial_out
+set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[8]
+set_location_assignment PIN_Y8 -to signal_in
+set_instance_assignment -name IO_STANDARD "2.5 V" -to signal_in
+set_location_assignment PIN_M8 -to clk25
 set_global_assignment -name SDC_FILE delay_line.sdc
 set_global_assignment -name VHDL_FILE uart_tx.vhd
 set_global_assignment -name VHDL_FILE uart.vhd
@@ -2422,24 +2440,14 @@ set_global_assignment -name VHDL_FILE channel.vhd
 set_global_assignment -name VHDL_FILE carry4.vhd
 set_global_assignment -name VHDL_FILE baudPack.vhd
 set_global_assignment -name VHDL_FILE baudgen.vhd
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_location_assignment PIN_W18 -to serial_out
-set_location_assignment PIN_AA22 -to signal_out[0]
-set_location_assignment PIN_AA21 -to signal_out[2]
-set_location_assignment PIN_U21 -to signal_out[4]
-set_location_assignment PIN_U22 -to signal_out[6]
-set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[6]
-set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[4]
-set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[2]
-set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[0]
-set_location_assignment PIN_T20 -to signal_out[8]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to serial_out
-set_instance_assignment -name IO_STANDARD "1.5 V" -to signal_out[8]
-set_location_assignment PIN_Y8 -to signal_in
-set_instance_assignment -name IO_STANDARD "2.5 V" -to signal_in
 set_global_assignment -name QIP_FILE pll.qip
-set_location_assignment PIN_M8 -to clk25
+set_global_assignment -name QIP_FILE dual_fifo.qip
+set_location_assignment PIN_AA22 -to wrt_out
+set_instance_assignment -name IO_STANDARD "1.5 V" -to wrt_out
+set_location_assignment PIN_L22 -to reset_outside
+set_instance_assignment -name IO_STANDARD "1.5 V" -to reset_outside
+set_location_assignment PIN_M21 -to restart_outside
+set_instance_assignment -name IO_STANDARD "1.5 V" -to restart_outside
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name QIP_FILE ethernet.qip
+set_global_assignment -name SIP_FILE ethernet.sip

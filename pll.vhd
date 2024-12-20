@@ -44,7 +44,7 @@ ENTITY pll IS
 	PORT
 	(
 		inclk0		: IN STD_LOGIC  := '0';
-		c0		: OUT STD_LOGIC ;
+		c0			: OUT STD_LOGIC ;
 		locked		: OUT STD_LOGIC 
 	);
 END pll;
@@ -141,7 +141,7 @@ BEGIN
 		bandwidth_type => "AUTO",
 		clk0_divide_by => 25,
 		clk0_duty_cycle => 50,
-		clk0_multiply_by => 25,
+		clk0_multiply_by => 12,
 		clk0_phase_shift => "0",
 		compensate_clock => "CLK0",
 		inclk0_input_frequency => 40000,
